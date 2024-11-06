@@ -28,6 +28,18 @@ where $\lambda$ is the regularization strength parameter, which controls the spa
 
 
 ## 3. METHODOLOGY  
+Coordinate descent is an optimization algorithm used to minimize multivariate functions by iteratively solving simpler univariate problems. At each iteration, the algorithm selects a single coordinate direction and minimizes the objective function along that direction, while keeping all other coordinates fixed. This process repeats cyclically for each coordinate until convergence. Given an initial point \( \mathbf{x}^{(0)} = (x_1^0, x_2^0, \dots, x_n^0) \), the algorithm updates each coordinate by solving:
+
+$\x_i^{(k+1)} = \arg \min_{x_i} f(x_1^{(k+1)}, \dots, x_{i-1}^{(k+1)}, x_i, x_{i+1}^{(k)}, \dots, x_n^{(k)})\$
+
+Alternatively, a gradient-based update can be used for \( x_i \), such that:
+
+$\x_i := x_i - \alpha \frac{\partial f}{\partial x_i}(\mathbf{x})\$
+
+where $\( \alpha \)$ is a step size parameter. This method is particularly efficient for high-dimensional problems, as each iteration focuses on a simpler, one-dimensional subproblem.
+
+
+
 
 ## 4. EXPERIMENT  
 
