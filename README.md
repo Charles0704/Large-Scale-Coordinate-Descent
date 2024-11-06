@@ -13,6 +13,9 @@ sparse solutions. We also conduct experiments to implement coordinate descent fo
 
 ## 2.2. LASSO  
 
+
+# 3. METHODOLOGY  
+
 # 4. EXPERIMENT  
 
 
