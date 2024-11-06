@@ -18,6 +18,13 @@ $\theta \odot m \|_{L_0} = \sum_i m_i$
 where $\theta$ represents the model parameters, $m$ is the mask, and $\odot$ denotes element-wise multiplication.
 
 ### 2.2. LASSO  
+Lasso\cite{tibshirani1996regression} is a regression analysis method that performs both variable selection and regularization in order to enhance the prediction accuracy and interpretability of the resulting statistical model. Lasso adds a penalty term, called the L1 regularization term equal to the absolute value of the magnitude of coefficients to the loss function, which helps to avoid overfitting by shrinking the coefficients of less important features toward zero:
+
+
+$\mathcal{L}(\theta) = \frac{1}{2} \sum_{i=1}^{m} \left( y_i - \sum_{j=0}^{n} \theta_j x_{ij} \right)^2 + \lambda \sum_{j=0}^{n} |\theta_j|$
+
+
+where $\lambda$ is the regularization strength parameter, which controls the sparsity of the model.
 
 
 ## 3. METHODOLOGY  
