@@ -60,22 +60,6 @@ Finally, the third equation rewrites the residual sum by isolating the contribut
 
 where $\hat{y}_{\text{pred}}^i\$ is the predicted value excluding the contribution from the current feature $x_j\$. This reformulation highlights the effect of updating $\theta_j\$ on the residual. Algorithm 1 shows the pseudocode for lasso coordinate descent.
 
-\begin{algorithm}
-\caption{Coordinate Descent For LASSO}
-\begin{algorithmic}[1]
-\State \textbf{Input:} $\theta$, $X$, $y$, $\lambda$, $\text{intercept}$
-\State \textbf{Initialize} $\theta$
-\Repeat \textbf{:}
-    \State FOR each feature j in X
-    \State $\quad \quad y_{\text{pred}} = X \cdot \theta$
-    \State \quad \quad IF \text{intercept} == \text{True AND j == 0}: 
-    \State \quad \quad \quad \quad $\theta_j = \rho_j $
-    \State \quad \quad ELSE: 
-    \State \quad \quad \quad \quad $\theta_j = S(\rho_j, \lambda)$
-    \State \Return updated $\theta $
-    \Until {the stopping criterion is satisfied}
-\end{algorithmic}
-\end{algorithm}
 
 ## 4. EXPERIMENT  
 
