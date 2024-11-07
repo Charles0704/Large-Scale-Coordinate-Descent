@@ -39,7 +39,7 @@ Alternatively, a gradient-based update can be used for \( x_i \), such that:
 where $\( \alpha \)$ is a step size parameter. This method is particularly efficient for high-dimensional problems, as each iteration focuses on a simpler, one-dimensional subproblem.
 
 ### 3.2. Coordinate Descent For LASSO
-The first equation defines the $\textbf{soft thresholding function}, \S(\alpha, \lambda) \$, which is widely used in Lasso regression for variable selection:  
+The first equation defines the $\textbf{soft thresholding function}, S(\alpha, \lambda) \$, which is widely used in Lasso regression for variable selection:  
 
 $S(\alpha, \lambda) =\begin{cases}\alpha - \lambda & \text{if } \alpha > \lambda \\0 & \text{if } |\alpha| \leq \lambda \\\alpha + \lambda & \text{if } \alpha < -\lambda\end{cases}\$
 
