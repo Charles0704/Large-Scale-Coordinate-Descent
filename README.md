@@ -40,7 +40,14 @@ where $\( \alpha \)$ is a step size parameter. This method is particularly effic
 
 -----------------------
 The first equation defines the $\textbf{soft thresholding function}, \S(\alpha, \lambda) \$, which is widely used in Lasso regression for variable selection:
-$\S(\alpha, \lambda) =\begin{cases}\alpha - \lambda & \text{if } \alpha > \lambda \\0 & \text{if } |\alpha| \leq \lambda \\\alpha + \lambda & \text{if } \alpha < -\lambda\end{cases}$
+$\
+S(\alpha, \lambda) =
+\begin{cases}
+\alpha - \lambda & \text{if } \alpha > \lambda \\
+0 & \text{if } |\alpha| \leq \lambda \\
+\alpha + \lambda & \text{if } \alpha < -\lambda
+\end{cases}
+\$
 
 For easier computation, we transform the soft shresholding function into the following form:
 
@@ -68,24 +75,6 @@ Finally, the third equation rewrites the residual sum by isolating the contribut
 \]
 
 where \( \hat{y}_{\text{pred}}^i \) is the predicted value excluding the contribution from the current feature \( x_j \). This reformulation highlights the effect of updating \( \theta_j \) on the residual. Algorithm 1 shows the pseudocode for lasso coordinate descent.
-
-
-\begin{algorithm}
-\caption{Coordinate Descent For LASSO}
-\begin{algorithmic}[1]
-\State \textbf{Input:} $\theta$, $X$, $y$, $\lambda$, $\text{intercept}$
-\State \textbf{Initialize} $\theta$
-\Repeat \textbf{:}
-    \State FOR each feature j in X
-    \State $\quad \quad y_{\text{pred}} = X \cdot \theta$
-    \State \quad \quad IF \text{intercept} == \text{True AND j == 0}: 
-    \State \quad \quad \quad \quad $\theta_j = \rho_j $
-    \State \quad \quad ELSE: 
-    \State \quad \quad \quad \quad $\theta_j = S(\rho_j, \lambda)$
-    \State \Return updated $\theta $
-    \Until {the stopping criterion is satisfied}
-\end{algorithmic}
-\end{algorithm}
 
 
 
