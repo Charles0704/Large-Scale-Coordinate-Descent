@@ -41,13 +41,6 @@ where $\( \alpha \)$ is a step size parameter. This method is particularly effic
 ### 3.2. Coordinate Descent For LASSO
 The first equation defines the $\textbf{soft thresholding function}, S(\alpha, \lambda) \$, which is widely used in Lasso regression for variable selection:  
 
-$S(\alpha, \lambda)$ = 
-$\begin{cases} 
-      \alpha - \lambda & \text{if } \alpha > \lambda \\
-      0 & \text{if } |\alpha| \leq \lambda \\
-      \alpha + \lambda & \text{if } \alpha < -\lambda 
-   \end{cases}\$
-
 For easier computation, we transform the soft shresholding function into the following form:
 
 
