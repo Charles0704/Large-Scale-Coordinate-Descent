@@ -39,8 +39,8 @@ $x_i := x_i - \alpha \frac{\partial f}{\partial x_i}(\mathbf{x})\$
 where $\( \alpha \)$ is a step size parameter. This method is particularly efficient for high-dimensional problems, as each iteration focuses on a simpler, one-dimensional subproblem.
 
 -----------------------
-The first equation defines the \textbf{soft thresholding function}, \( S(\alpha, \lambda) \), which is widely used in Lasso regression for variable selection:
-$S(\alpha, \lambda) =\begin{cases}
+The first equation defines the $\textbf{soft thresholding function}, \( S(\alpha, \lambda) \)$, which is widely used in Lasso regression for variable selection:
+$\S(\alpha, \lambda) =\begin{cases}
 \alpha - \lambda & \text{if } \alpha > \lambda \\
 0 & \text{if } |\alpha| \leq \lambda \\
 \alpha + \lambda & \text{if } \alpha < -\lambda
