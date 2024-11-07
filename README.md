@@ -55,7 +55,7 @@ The second equation,
 
 $\rho_j = \sum_{i=1}^{m} x_{j}^i \left( y_i - \sum_{k \neq j}^{n} \theta_k x_{k}^i \right)\$
 
-is the $\textbf{partial residual sum}$ used in coordinate descent for Lasso regression. Here, $\( \rho_j \)$ is computed for each feature $\( x_j \)$, accounting for the current values of the other coefficients $\( \theta_k \) (for \( k \neq j \))$.
+is the $\textbf{partial residual sum}$ used in coordinate descent for Lasso regression. Here, $\rho_j\$ is computed for each feature $\x_j\$, accounting for the current values of the other coefficients $\\theta_k \ for \( k \neq j \)$.
 
 % Reformulation of residual term
 Finally, the third equation rewrites the residual sum by isolating the contribution of $\( x_j \)$ to the prediction:
