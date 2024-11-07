@@ -58,8 +58,7 @@ is the $\textbf{partial residual sum}$ used in coordinate descent for Lasso regr
 
 Finally, the third equation rewrites the residual sum by isolating the contribution of $x_j\$ to the prediction:
 
-### $\rho_j = \sum_{i=1}^{m} x_{j}^i \left( y_i -\hat{y_{pred}}^i+\theta_j x_{j}^i \right)\$
-### $\rho_j = \sum_{i=1}^{m} x_{j}^i \left( y_i -\hat{y}_{\text{pred}}^i+\theta_j x_{j}^i \right)\$
+### $\rho_j = \sum_{i=1}^{m} x_{j}^i \left( y_i -\hat{y_{\pred}}^i+\theta_j x_{j}^i \right)\$
 
 
 
