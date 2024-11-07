@@ -38,6 +38,62 @@ $x_i := x_i - \alpha \frac{\partial f}{\partial x_i}(\mathbf{x})\$
 
 where $\( \alpha \)$ is a step size parameter. This method is particularly efficient for high-dimensional problems, as each iteration focuses on a simpler, one-dimensional subproblem.
 
+-----------------------
+The first equation defines the \textbf{soft thresholding function}, \( S(\alpha, \lambda) \), which is widely used in Lasso regression for variable selection:
+\[
+S(\alpha, \lambda) =
+\begin{cases}
+\alpha - \lambda & \text{if } \alpha > \lambda \\
+0 & \text{if } |\alpha| \leq \lambda \\
+\alpha + \lambda & \text{if } \alpha < -\lambda
+\end{cases}
+\]
+
+For easier computation, we transform the soft shresholding function into the following form:
+
+
+\[
+S(\alpha, \lambda) = \text{sign}(\alpha) \max(|\alpha| - \lambda, 0)
+\]
+
+The soft thresholding operator shrinks the coefficient \( \alpha \) by \( \lambda \), setting it to zero if it falls below the threshold.
+
+% Partial residual sum for updating coefficient theta_j
+The second equation, 
+
+\[
+\rho_j = \sum_{i=1}^{m} x_{j}^i \left( y_i - \sum_{k \neq j}^{n} \theta_k x_{k}^i \right),
+\]
+
+is the \textbf{partial residual sum} used in coordinate descent for Lasso regression. Here, \( \rho_j \) is computed for each feature \( x_j \), accounting for the current values of the other coefficients \( \theta_k \) (for \( k \neq j \)).
+
+% Reformulation of residual term
+Finally, the third equation rewrites the residual sum by isolating the contribution of \( x_j \) to the prediction:
+
+\[
+\rho_j = \sum_{i=1}^{m} x_{j}^i \left( y_i - \hat{y}_{\text{pred}}^i + \theta_j x_{j}^i \right),
+\]
+
+where \( \hat{y}_{\text{pred}}^i \) is the predicted value excluding the contribution from the current feature \( x_j \). This reformulation highlights the effect of updating \( \theta_j \) on the residual. Algorithm 1 shows the pseudocode for lasso coordinate descent.
+
+
+\begin{algorithm}
+\caption{Coordinate Descent For LASSO}
+\begin{algorithmic}[1]
+\State \textbf{Input:} $\theta$, $X$, $y$, $\lambda$, $\text{intercept}$
+\State \textbf{Initialize} $\theta$
+\Repeat \textbf{:}
+    \State FOR each feature j in X
+    \State $\quad \quad y_{\text{pred}} = X \cdot \theta$
+    \State \quad \quad IF \text{intercept} == \text{True AND j == 0}: 
+    \State \quad \quad \quad \quad $\theta_j = \rho_j $
+    \State \quad \quad ELSE: 
+    \State \quad \quad \quad \quad $\theta_j = S(\rho_j, \lambda)$
+    \State \Return updated $\theta $
+    \Until {the stopping criterion is satisfied}
+\end{algorithmic}
+\end{algorithm}
+
 
 
 
