@@ -52,27 +52,27 @@ S(\alpha, \lambda) =
 For easier computation, we transform the soft shresholding function into the following form:
 
 
-\[
+$\
 S(\alpha, \lambda) = \text{sign}(\alpha) \max(|\alpha| - \lambda, 0)
-\]
+\$
 
 The soft thresholding operator shrinks the coefficient \( \alpha \) by \( \lambda \), setting it to zero if it falls below the threshold.
 
 % Partial residual sum for updating coefficient theta_j
 The second equation, 
 
-\[
+$\
 \rho_j = \sum_{i=1}^{m} x_{j}^i \left( y_i - \sum_{k \neq j}^{n} \theta_k x_{k}^i \right),
-\]
+\$
 
 is the \textbf{partial residual sum} used in coordinate descent for Lasso regression. Here, \( \rho_j \) is computed for each feature \( x_j \), accounting for the current values of the other coefficients \( \theta_k \) (for \( k \neq j \)).
 
 % Reformulation of residual term
 Finally, the third equation rewrites the residual sum by isolating the contribution of \( x_j \) to the prediction:
 
-\[
+$\
 \rho_j = \sum_{i=1}^{m} x_{j}^i \left( y_i - \hat{y}_{\text{pred}}^i + \theta_j x_{j}^i \right),
-\]
+\$
 
 where \( \hat{y}_{\text{pred}}^i \) is the predicted value excluding the contribution from the current feature \( x_j \). This reformulation highlights the effect of updating \( \theta_j \) on the residual. Algorithm 1 shows the pseudocode for lasso coordinate descent.
 
