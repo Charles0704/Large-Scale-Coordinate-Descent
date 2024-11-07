@@ -60,7 +60,7 @@ Finally, the third equation rewrites the residual sum by isolating the contribut
 
 $\rho_j = \sum_{i=1}^{m} x_{j}^i \left( y_i - \hat{y}_{\text{pred}}^i + \theta_j x_{j}^i \right)\$
 
-where $\(\hat{y}_{\text{pred}}^i\)$ is the predicted value excluding the contribution from the current feature $\x_j\$. This reformulation highlights the effect of updating $\(\theta_j\)$ on the residual. Algorithm 1 shows the pseudocode for lasso coordinate descent.
+where $\(\hat{y}_{\text{pred}}^i\)$ is the predicted value excluding the contribution from the current feature $\\x_j\\$. This reformulation highlights the effect of updating $\(\theta_j\)$ on the residual. Algorithm 1 shows the pseudocode for lasso coordinate descent.
 
 
 
