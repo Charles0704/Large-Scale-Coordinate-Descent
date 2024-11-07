@@ -21,7 +21,7 @@ where $\theta$ represents the model parameters, $m$ is the mask, and $\odot$ den
 Lasso\cite{tibshirani1996regression} is a regression analysis method that performs both variable selection and regularization in order to enhance the prediction accuracy and interpretability of the resulting statistical model. Lasso adds a penalty term, called the L1 regularization term equal to the absolute value of the magnitude of coefficients to the loss function, which helps to avoid overfitting by shrinking the coefficients of less important features toward zero:
 
 
-$\mathcal{L}(\theta) = \frac{1}{2} \sum_{i=1}^{m} \left( y_i - \sum_{j=0}^{n} \theta_j x_{ij} \right)^2 + \lambda \sum_{j=0}^{n} |\theta_j|\$
+### $\mathcal{L}(\theta) = \frac{1}{2} \sum_{i=1}^{m} \left( y_i - \sum_{j=0}^{n} \theta_j x_{ij} \right)^2 + \lambda \sum_{j=0}^{n} |\theta_j|\$
 
 
 where $\lambda$ is the regularization strength parameter, which controls the sparsity of the model.
@@ -30,11 +30,11 @@ where $\lambda$ is the regularization strength parameter, which controls the spa
 ## 3. METHODOLOGY  
 Coordinate descent is an optimization algorithm used to minimize multivariate functions by iteratively solving simpler univariate problems. At each iteration, the algorithm selects a single coordinate direction and minimizes the objective function along that direction, while keeping all other coordinates fixed. This process repeats cyclically for each coordinate until convergence. Given an initial point \( \mathbf{x}^{(0)} = (x_1^0, x_2^0, \dots, x_n^0) \), the algorithm updates each coordinate by solving:
 
-$x_i^{(k+1)} = \arg \min_{x_i} f(x_1^{(k+1)}, \dots, x_{i-1}^{(k+1)}, x_i, x_{i+1}^{(k)}, \dots, x_n^{(k)})\$
+### $x_i^{(k+1)} = \arg \min_{x_i} f(x_1^{(k+1)}, \dots, x_{i-1}^{(k+1)}, x_i, x_{i+1}^{(k)}, \dots, x_n^{(k)})\$
 
 Alternatively, a gradient-based update can be used for \( x_i \), such that:
 
-$x_i := x_i - \alpha \frac{\partial f}{\partial x_i}(\mathbf{x})\$
+### $x_i := x_i - \alpha \frac{\partial f}{\partial x_i}(\mathbf{x})\$
 
 where $\( \alpha \)$ is a step size parameter. This method is particularly efficient for high-dimensional problems, as each iteration focuses on a simpler, one-dimensional subproblem.
 
@@ -46,19 +46,19 @@ $\S(\alpha, \lambda) =\begin{cases}\alpha - \lambda & \text{if } \alpha > \lambd
 For easier computation, we transform the soft shresholding function into the following form:
 
 
-$\S(\alpha, \lambda) = \text{sign}(\alpha) \max(|\alpha| - \lambda, 0)\$
+### $\S(\alpha, \lambda) = \text{sign}(\alpha) \max(|\alpha| - \lambda, 0)\$
 
 The soft thresholding operator shrinks the coefficient $\alpha\$ by $\lambda\$, setting it to zero if it falls below the threshold.
 
 The second equation, 
 
-$\rho_j = \sum_{i=1}^{m} x_{j}^i \left( y_i - \sum_{k \neq j}^{n} \theta_k x_{k}^i \right)\$
+### $\rho_j = \sum_{i=1}^{m} x_{j}^i \left( y_i - \sum_{k \neq j}^{n} \theta_k x_{k}^i \right)\$
 
 is the $\textbf{partial residual sum}$ used in coordinate descent for Lasso regression. Here, $\rho_j\$ is computed for each feature $x_j \$, accounting for the current values of the other coefficients $\\theta_k \ for \( k \neq j \)$.
 
 Finally, the third equation rewrites the residual sum by isolating the contribution of $x_j\$ to the prediction:
 
-$\rho_j = \sum_{i=1}^{m} x_{j}^i \left( y_i -\hat{y_{pred}}^i+\theta_j x_{j}^i \right)\$
+### $\rho_j = \sum_{i=1}^{m} x_{j}^i \left( y_i -\hat{y_{pred}}^i+\theta_j x_{j}^i \right)\$
 
 where $\hat{y}_{\text{pred}}^i\$ is the predicted value excluding the contribution from the current feature $x_j\$. This reformulation highlights the effect of updating $\theta_j\$ on the residual. Algorithm 1 shows the pseudocode for lasso coordinate descent.
 
