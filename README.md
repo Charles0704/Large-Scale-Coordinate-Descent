@@ -21,7 +21,7 @@ where $\theta$ represents the model parameters, $m$ is the mask, and $\odot$ den
 Lasso\cite{tibshirani1996regression} is a regression analysis method that performs both variable selection and regularization in order to enhance the prediction accuracy and interpretability of the resulting statistical model. Lasso adds a penalty term, called the L1 regularization term equal to the absolute value of the magnitude of coefficients to the loss function, which helps to avoid overfitting by shrinking the coefficients of less important features toward zero:
 
 
-$\mathcal{L}(\theta) = \frac{1}{2} \sum_{i=1}^{m} \left( y_i - \sum_{j=0}^{n} \theta_j x_{ij} \right)^2 + \lambda \sum_{j=0}^{n} |\theta_j|$
+$\mathcal{L}(\theta) = \frac{1}{2} \sum_{i=1}^{m} \left( y_i - \sum_{j=0}^{n} \theta_j x_{ij} \right)^2 + \lambda \sum_{j=0}^{n} |\theta_j|\$
 
 
 where $\lambda$ is the regularization strength parameter, which controls the sparsity of the model.
@@ -58,7 +58,7 @@ is the $\textbf{partial residual sum}$ used in coordinate descent for Lasso regr
 
 Finally, the third equation rewrites the residual sum by isolating the contribution of $\( x_j \)$ to the prediction:
 
-$\rho_j = \sum_{i=1}^{m} x_{j}^i \left( y_i - \hat{y}_{\text{pred}}^i + \theta_j x_{j}^i \right)\$
+$\rho_j = \sum_{i=1}^{m} x_{j}^i \left( y_i - \sum_{k \neq j}^{n} \theta_k x_{k}^i \right)\$
 
 where $\(\hat{y}_{\text{pred}}^i\)$ is the predicted value excluding the contribution from the current feature $\( x_j \)$. This reformulation highlights the effect of updating $\(\theta_j\)$ on the residual. Algorithm 1 shows the pseudocode for lasso coordinate descent.
 
