@@ -61,9 +61,7 @@ The soft thresholding operator shrinks the coefficient \( \alpha \) by \( \lambd
 % Partial residual sum for updating coefficient theta_j
 The second equation, 
 
-$\
-\rho_j = \sum_{i=1}^{m} x_{j}^i \left( y_i - \sum_{k \neq j}^{n} \theta_k x_{k}^i \right),
-\$
+$\rho_j = \sum_{i=1}^{m} x_{j}^i \left( y_i - \sum_{k \neq j}^{n} \theta_k x_{k}^i \right)\$
 
 is the \textbf{partial residual sum} used in coordinate descent for Lasso regression. Here, \( \rho_j \) is computed for each feature \( x_j \), accounting for the current values of the other coefficients \( \theta_k \) (for \( k \neq j \)).
 
